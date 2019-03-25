@@ -57,6 +57,21 @@ function authCallback(request){
 }
 ```
 
+### Uploading image
+```js
+GPhotosApp.uploadPhoto(mediaBlob,mediaName); // for images or video () (image size limit, refer to https://developers.google.com/photos/library/guides/api-limits-quotas)
+```
+
+### Uploading image to album
+```js
+GPhotosApp.uploadPhotoToAlbum(mediaBlob,mediaName,googlePhotoAlbumId); // for images or video () (image size limit, refer to https://developers.google.com/photos/library/guides/api-limits-quotas)
+```
+
+### Logout (remove authenticated user)
+```js
+GPhotosApp.logout();
+```
+
 Depedencies
 ------------
 1. apps-script-oauth2 - https://github.com/gsuitedevs/apps-script-oauth2
