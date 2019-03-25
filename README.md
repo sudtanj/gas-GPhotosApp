@@ -75,3 +75,7 @@ GPhotosApp.logout();
 Depedencies
 ------------
 1. apps-script-oauth2 - https://github.com/gsuitedevs/apps-script-oauth2
+
+License
+-------
+GPhotosApp for Google Apps Script is released under the MIT license.
