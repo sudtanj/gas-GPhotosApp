@@ -16,6 +16,47 @@ identifier. (Do not turn on Development Mode unless you know what you
 are doing. The development version may not work.)
 4. Press Save. You can now use the GPhotosApp library in your code.
 
+## Redirect URI
+
+Before you can start authenticating against an OAuth2 provider, you usually need
+to register your application with that OAuth2 provider and obtain a client ID
+and secret. Often a provider's registration screen requires you to enter a
+"Redirect URI", which is the URL that the user's browser will be redirected to
+after they've authorized access to their account at that provider.
+
+For this library (and the Apps Script functionality in general) the URL will
+always be in the following format:
+
+    https://script.google.com/macros/d/{SCRIPT ID}/usercallback
+
+Where `{SCRIPT ID}` is the ID of the script that is using this library. You
+can find your script's ID in the Apps Script code editor by clicking on
+the menu item "File > Project properties".
+
+## Usage
+
+To use the library, you need the following code to be included in your project.
+```js
+clientId="OAUTH2_CLIENT_ID"
+clientSecret="OAUTH2_CLIENT_SECRET"
+GPhotosApp.init(clientId, clientSecret);
+function run(){
+//check if user already authenticated with OAuth2 
+  if(!GPhotosApp.isAuthenticated()){
+  //display the authentication link if not authenticated
+  //link will be available at log and need to be open
+  //user just need to follow the instruction and just rerun this code after it's done authenticate 
+    Logger.log(GPhotosApp.doAuthentication());
+    return 1;
+  }
+  // your program
+}
+
+function authCallback(request){
+  return GPhotosApp.authCallback(request);
+}
+```
+
 Depedencies
 ------------
 1. apps-script-oauth2 - https://github.com/gsuitedevs/apps-script-oauth2
